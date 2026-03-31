@@ -5,213 +5,229 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jonathan Brousse - Ingénieur Manager transverse</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <style>
 :root {
-    --bg: #f8fafc;
-    --card: #ffffff;
-    --primary: #0f172a;
-    --secondary: #475569;
-    --accent: #2563eb;
-    --accent-light: #dbeafe;
-    --border: #e2e8f0;
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --bg-color: #f4f7f6;
+    --text-color: #333;
 }
 
-/* RESET */
-* { box-sizing: border-box; }
-
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     margin: 0;
-    font-family: Inter, system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--primary);
+    padding: 20px;
 }
 
 /* CONTAINER */
 .cv-container {
     max-width: 1100px;
-    margin: 40px auto;
-    background: var(--card);
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
     overflow: hidden;
-    animation: fadeIn 0.8s ease;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* HEADER */
 header {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    width: 100%;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
-    padding: 50px 20px 30px;
+    padding: 40px 20px;
 }
 
+/* AVATAR */
 .avatar-placeholder {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
+    border: 4px solid var(--accent-color);
     border-radius: 50%;
-    background: var(--accent-light);
-    margin: 0 auto 20px;
-    animation: pop 0.8s ease;
+    margin: 0 auto 20px auto;
+    overflow: hidden;
 }
 
+.avatar-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* TITRES */
 header h1 {
-    margin: 0;
-    font-size: 2.2rem;
-    animation: slideDown 0.6s ease;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    font-size: 2.5em;
 }
 
 header h2 {
-    margin-top: 8px;
-    font-weight: 400;
-    color: #cbd5f5;
-    font-size: 1rem;
-    animation: slideDown 0.8s ease;
-}
-
-/* GRID */
-.cv-body {
-    display: grid;
-    grid-template-columns: 320px 1fr;
+    margin: 0;
+    font-weight: 300;
+    color: #bdc3c7;
+    font-size: 1.2em;
 }
 
 /* SIDEBAR */
 .sidebar {
+    flex: 1;
+    min-width: 280px;
+    background-color: #ecf0f1;
     padding: 30px;
-    border-right: 1px solid var(--border);
-    background: #f9fafb;
-}
-
-.sidebar-item {
-    margin-bottom: 30px;
-    animation: fadeUp 0.6s ease;
-}
-
-.sidebar-item ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar-item li {
-    padding: 6px 0;
-    color: var(--secondary);
+    border-right: 1px solid #ddd;
 }
 
 /* MAIN */
 .main-content {
+    flex: 2;
+    min-width: 320px;
     padding: 30px 40px;
 }
 
-/* TITRES */
+/* TITRES SECTIONS */
 .section-title {
-    font-size: 0.85rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    font-size: 1.3em;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--accent);
-    margin-bottom: 15px;
-    font-weight: 600;
 }
 
-/* JOB */
-.job {
+.section-title i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+/* SIDEBAR LIST */
+.sidebar-item {
     margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
 }
 
-.job.visible {
-    opacity: 1;
-    transform: translateY(0);
+.sidebar-item ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.sidebar-item ul li {
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
 }
 
-.job-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.job-date {
-    font-size: 0.8rem;
-    color: var(--secondary);
-    background: var(--accent-light);
-    padding: 4px 10px;
-    border-radius: 20px;
-}
-
-.job-context {
-    font-size: 0.9rem;
-    color: var(--secondary);
-    margin: 5px 0 10px;
-}
-
-/* LIST */
-.job ul {
-    padding-left: 18px;
-}
-
-/* SKILLS */
-.skills li {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    padding: 6px 10px;
-    border-radius: 20px;
-    margin: 4px 4px 0 0;
-    font-size: 0.85rem;
-    transition: transform 0.2s ease;
-}
-
-.skills li:hover {
-    transform: translateY(-2px);
+.sidebar-item ul li::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
 }
 
 /* CONTACT */
 .contact-info p {
     margin: 5px 0;
-    color: var(--secondary);
+    word-break: break-word;
 }
 
-/* ANIMATIONS */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* JOB */
+.job {
+    margin-bottom: 25px;
 }
 
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-15px);}
-    to { opacity: 1; transform: translateY(0);}
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(15px);}
-    to { opacity: 1; transform: translateY(0);}
+.job-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin: 0;
 }
 
-@keyframes pop {
-    from { transform: scale(0.8); opacity: 0;}
-    to { transform: scale(1); opacity: 1;}
+.job-date {
+    font-style: italic;
+    color: #7f8c8d;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .cv-body {
-        grid-template-columns: 1fr;
+.job-context {
+    color: #e67e22;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
+}
+
+.job ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* 📱 RESPONSIVE MOBILE */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .cv-container {
+        flex-direction: column;
+    }
+
+    .sidebar, .main-content {
+        min-width: 100%;
+        padding: 20px;
     }
 
     .sidebar {
         border-right: none;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid #ddd;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    header h2 {
+        font-size: 1em;
+    }
+
+    .avatar-placeholder {
+        width: 120px;
+        height: 120px;
     }
 
     .main-content {
-        padding: 25px;
+        padding: 20px;
+    }
+      .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-date {
+        margin-top: 3px;
+    }
+    .job-title {
+    flex: 1;
+    min-width: 0; /* 🔥 indispensable pour autoriser le retour à la ligne */
+    word-break: break-word;
+    }
+
+    .job ul li {
+    word-break: break-word;
     }
 }
 </style>
@@ -222,101 +238,147 @@ header h2 {
 <div class="cv-container">
 
 <header>
-    <div class="avatar-placeholder"></div>
+
+    <div class="avatar-placeholder">
+        <!-- 👉 REMPLACE CE LIEN PAR TA PHOTO -->
+        <img src="https://i.pravatar.cc/300" alt="Avatar">
+    </div>
+
     <h1>JONATHAN BROUSSE</h1>
     <h2>INGÉNIEUR MANAGER TRANSVERSE</h2>
-</header>
 
-<div class="cv-body">
+</header>
 
 <aside class="sidebar">
 
 <div class="sidebar-item">
-    <h3 class="section-title">👤 Profil</h3>
-    <p>S'appuyant sur un profil technique d'ingénieur complété par de solides expériences en management d'équipes pluridisciplinaires et en immobilier, j'entame aujourd'hui une transition professionnelle.</p>
+    <h3 class="section-title"><i class="fas fa-user"></i> Profil</h3>
+    <p>S'appuyant sur un profil technique d'ingénieur complété par de solides expériences en management d'équipes pluridisciplinaires et en immobilier, j'entame aujourd'hui une transition professionnelle. Mon objectif : m'investir dans une fonction transverse alliant expertise technique et travail en équipe.</p>
 </div>
 
 <div class="sidebar-item contact-info">
-    <h3 class="section-title">📬 Contact</h3>
-    <p>jonathan.brousse.job@gmail.com</p>
-    <p>Nantes</p>
+    <h3 class="section-title"><i class="fas fa-address-card"></i> Contact</h3>
+    <p><i class="fas fa-envelope"></i> jonathan.brousse.job@gmail.com</p>
+    <p><i class="fas fa-map-marker-alt"></i> 44100 Nantes</p>
 </div>
 
 <div class="sidebar-item">
-    <h3 class="section-title">🛠 Compétences</h3>
-    <ul class="skills">
+    <h3 class="section-title"><i class="fas fa-tools"></i> Compétences</h3>
+    <ul>
         <li>Gestion d'entreprise</li>
         <li>Gestion de projet</li>
         <li>Innovation</li>
-        <li>Programmation</li>
-        <li>Process</li>
+        <li>Programmation (Automate / Robot / PowerBI)</li>
+        <li>Process standards</li>
     </ul>
 </div>
 
 <div class="sidebar-item">
-    <h3 class="section-title">🌍 Langues</h3>
+    <h3 class="section-title"><i class="fas fa-language"></i> Langues</h3>
     <ul>
         <li>Français</li>
         <li>Anglais</li>
     </ul>
 </div>
 
+<div class="sidebar-item">
+    <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Formation</h3>
+
+    <div class="job">
+        <p class="job-title" style="font-size: 1em;">MGCM Nantes</p>
+        <span class="job-date" style="font-size: 0.9em;">2017</span>
+    </div>
+
+    <div class="job">
+        <p class="job-title" style="font-size: 1em;">UTBM - Belfort</p>
+        <span class="job-date" style="font-size: 0.9em;">2009</span>
+    </div>
+
+    <div class="job">
+        <p class="job-title" style="font-size: 1em;">BTS Mécanique et Automatismes Industriels</p>
+        <p class="job-context" style="color: #7f8c8d;">Lycée Louis Bascan - Rambouillet</p>
+        <span class="job-date" style="font-size: 0.9em;">2006</span>
+    </div>
+
+</div>
+
 </aside>
 
 <main class="main-content">
+        <h3 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h3>
 
-<h3 class="section-title">💼 Expériences</h3>
+        <div class="job">
+            <div class="job-header">
+                <h4 class="job-title">Auto-Entrepreneur - Consultant en Immobilier</h4>
+                <span class="job-date">2024-2026</span>
+            </div>
+            <ul>
+                <li>Conseiller commercial / Expertise technique et valorisation du patrimoine immobilier</li>
+            </ul>
+        </div>
 
-<div class="job">
-    <div class="job-header">
-        <div class="job-title">Consultant Immobilier</div>
-        <div class="job-date">2024-2026</div>
-    </div>
-    <ul>
-        <li>Expertise et valorisation du patrimoine</li>
-    </ul>
+        <div class="job">
+            <div class="job-header">
+                <h4 class="job-title">Responsable Industriel</h4>
+                <span class="job-date">2020-2021</span>
+            </div>
+            <p class="job-context">Fabrication de cartes électroniques</p>
+            <ul>
+                <li>Pilotage des services Industrialisation, Méthodes, Procédés</li>
+                <li>Management de 20 techniciens/ingénieurs</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h4 class="job-title">Responsable Advanced Process</h4>
+                <span class="job-date">2018-2020</span>
+            </div>
+            <p class="job-context">Fabrication d'antennes paraboliques</p>
+            <ul>
+                <li>Recherche et introduction de moyens de production novateurs</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h4 class="job-title">Responsable Production Autonome</h4>
+                <span class="job-date">2016-2018</span>
+            </div>
+            <p class="job-context">Fabrication d'antennes paraboliques</p>
+            <ul>
+                <li>Pilotage d'une Unité Autonome de Production (UAP), gestion de l'atelier, de la Supply Chain (appro/planification)</li>
+                <li>Gestion d'équipe 50 personnes</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h4 class="job-title">Ingénieur Process</h4>
+                <span class="job-date">2013-2016</span>
+            </div>
+            <p class="job-context">Fabrication d'antennes paraboliques</p>
+            <ul>
+                <li>Ligne robotisée</li>
+                <li>Co-conception R&D</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h4 class="job-title">Ingénieur Process</h4>
+                <span class="job-date">2010-2013</span>
+            </div>
+            <p class="job-context">Fabrication de panneaux de signalisation</p>
+            <ul>
+                <li>Industrialisation / méthode</li>
+                <li>Travaux neufs</li>
+            </ul>
+        </div>
+
+    </main>
+
 </div>
-
-<div class="job">
-    <div class="job-header">
-        <div class="job-title">Responsable Industriel</div>
-        <div class="job-date">2020-2021</div>
-    </div>
-    <ul>
-        <li>Management 20 personnes</li>
-        <li>Pilotage industrialisation</li>
-    </ul>
-</div>
-
-<div class="job">
-    <div class="job-header">
-        <div class="job-title">Responsable Process</div>
-        <div class="job-date">2018-2020</div>
-    </div>
-    <ul>
-        <li>Innovation production</li>
-    </ul>
-</div>
-
-</main>
-
-</div>
-</div>
-
-<script>
-/* Animation au scroll */
-const jobs = document.querySelectorAll('.job');
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-});
-
-jobs.forEach(job => observer.observe(job));
-</script>
 
 </body>
 </html>
