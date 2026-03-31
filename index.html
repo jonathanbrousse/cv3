@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan Brousse - Ingénieur Manager transverse</title>
+
+<style>
+:root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --primary: #0f172a;
+    --secondary: #475569;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --border: #e2e8f0;
+}
+
+/* RESET */
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--primary);
+}
+
+/* CONTAINER */
+.cv-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+    animation: fadeIn 0.8s ease;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    margin: 0 auto 20px;
+    animation: pop 0.8s ease;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    animation: slideDown 0.6s ease;
+}
+
+header h2 {
+    margin-top: 8px;
+    font-weight: 400;
+    color: #cbd5f5;
+    font-size: 1rem;
+    animation: slideDown 0.8s ease;
+}
+
+/* GRID */
+.cv-body {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+}
+
+/* SIDEBAR */
+.sidebar {
+    padding: 30px;
+    border-right: 1px solid var(--border);
+    background: #f9fafb;
+}
+
+.sidebar-item {
+    margin-bottom: 30px;
+    animation: fadeUp 0.6s ease;
+}
+
+.sidebar-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-item li {
+    padding: 6px 0;
+    color: var(--secondary);
+}
+
+/* MAIN */
+.main-content {
+    padding: 30px 40px;
+}
+
+/* TITRES */
+.section-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* JOB */
+.job {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.job.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.job-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.job-date {
+    font-size: 0.8rem;
+    color: var(--secondary);
+    background: var(--accent-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.job-context {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin: 5px 0 10px;
+}
+
+/* LIST */
+.job ul {
+    padding-left: 18px;
+}
+
+/* SKILLS */
+.skills li {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 6px 10px;
+    border-radius: 20px;
+    margin: 4px 4px 0 0;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+
+.skills li:hover {
+    transform: translateY(-2px);
+}
+
+/* CONTACT */
+.contact-info p {
+    margin: 5px 0;
+    color: var(--secondary);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+@keyframes pop {
+    from { transform: scale(0.8); opacity: 0;}
+    to { transform: scale(1); opacity: 1;}
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .cv-body {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cv-container">
+
+<header>
+    <div class="avatar-placeholder"></div>
+    <h1>JONATHAN BROUSSE</h1>
+    <h2>INGÉNIEUR MANAGER TRANSVERSE</h2>
+</header>
+
+<div class="cv-body">
+
+<aside class="sidebar">
+
+<div class="sidebar-item">
+    <h3 class="section-title">👤 Profil</h3>
+    <p>S'appuyant sur un profil technique d'ingénieur complété par de solides expériences en management d'équipes pluridisciplinaires et en immobilier, j'entame aujourd'hui une transition professionnelle.</p>
+</div>
+
+<div class="sidebar-item contact-info">
+    <h3 class="section-title">📬 Contact</h3>
+    <p>jonathan.brousse.job@gmail.com</p>
+    <p>Nantes</p>
+</div>
+
+<div class="sidebar-item">
+    <h3 class="section-title">🛠 Compétences</h3>
+    <ul class="skills">
+        <li>Gestion d'entreprise</li>
+        <li>Gestion de projet</li>
+        <li>Innovation</li>
+        <li>Programmation</li>
+        <li>Process</li>
+    </ul>
+</div>
+
+<div class="sidebar-item">
+    <h3 class="section-title">🌍 Langues</h3>
+    <ul>
+        <li>Français</li>
+        <li>Anglais</li>
+    </ul>
+</div>
+
+</aside>
+
+<main class="main-content">
+
+<h3 class="section-title">💼 Expériences</h3>
+
+<div class="job">
+    <div class="job-header">
+        <div class="job-title">Consultant Immobilier</div>
+        <div class="job-date">2024-2026</div>
+    </div>
+    <ul>
+        <li>Expertise et valorisation du patrimoine</li>
+    </ul>
+</div>
+
+<div class="job">
+    <div class="job-header">
+        <div class="job-title">Responsable Industriel</div>
+        <div class="job-date">2020-2021</div>
+    </div>
+    <ul>
+        <li>Management 20 personnes</li>
+        <li>Pilotage industrialisation</li>
+    </ul>
+</div>
+
+<div class="job">
+    <div class="job-header">
+        <div class="job-title">Responsable Process</div>
+        <div class="job-date">2018-2020</div>
+    </div>
+    <ul>
+        <li>Innovation production</li>
+    </ul>
+</div>
+
+</main>
+
+</div>
+</div>
+
+<script>
+/* Animation au scroll */
+const jobs = document.querySelectorAll('.job');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+});
+
+jobs.forEach(job => observer.observe(job));
+</script>
+
+</body>
+</html>
