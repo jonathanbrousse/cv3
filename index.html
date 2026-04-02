@@ -262,11 +262,41 @@ header h2 {
     <p>S'appuyant sur un profil technique d'ingénieur complété par de solides expériences en management d'équipes pluridisciplinaires et en immobilier, j'entame aujourd'hui une transition professionnelle. Mon objectif : m'investir dans une fonction transverse alliant expertise technique et travail en équipe.</p>
 </div>
 
+
 <div class="sidebar-item contact-info">
     <h3 class="section-title"><i class="fas fa-address-card"></i> Contact</h3>
-    <p><i class="fas fa-envelope"></i> jonathan.brousse.job@gmail.com</p>
+    
+    <p id="email-container">
+        <i class="fas fa-envelope"></i> 
+    </p>
+    
     <p><i class="fas fa-map-marker-alt"></i> 44100 Nantes</p>
 </div>
+
+<script>
+    (function() {
+        // On sépare votre mail en deux
+        var user = "jonathan.brousse.job";
+        var domain = "gmail.com";
+        var fullEmail = user + "@" + domain;
+        
+        // On récupère le paragraphe qui doit contenir le mail
+        var container = document.getElementById("email-container");
+        
+        // On crée le lien cliquable
+        var mailLink = document.createElement("a");
+        mailLink.href = "mailto:" + fullEmail;
+        mailLink.textContent = " " + fullEmail;
+        // On garde le style cohérent avec votre CV (couleur, etc.)
+        mailLink.style.color = "inherit"; 
+        mailLink.style.textDecoration = "none";
+
+        // On ajoute le lien après l'icône de l'enveloppe
+        container.appendChild(mailLink);
+    })();
+</script>
+
+
 
 <div class="sidebar-item">
     <h3 class="section-title"><i class="fas fa-tools"></i> Compétences</h3>
