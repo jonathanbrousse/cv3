@@ -8,11 +8,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
+/* 🔥 LA RÈGLE MAGIQUE POUR EMPÊCHER LE DÉBORDEMENT */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden; /* Empêche le défilement horizontal de la page entière */
+}
+
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #34495e;
     --accent-color: #3498db;
-    /*--accent-color: #6e56d3;*/
     --bg-color: #f4f7f6;
     --text-color: #333;
 }
@@ -36,6 +44,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 /* HEADER */
@@ -55,7 +64,6 @@ header {
     border-radius: 50%;
     margin:  0 auto 20px auto;
     overflow: hidden;
-    box-sizing: border-box;
     display: grid;
     place-items: center;
     background-color: transparent;
@@ -78,6 +86,7 @@ header h1 {
     margin: 0 0 10px 0;
     letter-spacing: 2px;
     font-size: 2.5em;
+    word-wrap: break-word;
 }
 
 header h2 {
@@ -85,6 +94,7 @@ header h2 {
     font-weight: 300;
     color: #bdc3c7;
     font-size: 1.2em;
+    word-wrap: break-word;
 }
 
 /* SIDEBAR */
@@ -195,11 +205,19 @@ header h2 {
 
     .cv-container {
         flex-direction: column;
+        border-radius: 0; /* Optionnel : un CV plein écran sur mobile rend mieux sans bords arrondis */
     }
 
+    header {
+        padding: 30px 15px; /* Un peu moins de padding en haut et sur les côtés */
+    }
+
+    /* 🔥 CORRECTION DU DÉBORDEMENT DES BLOCS */
     .sidebar, .main-content {
-        min-width: 100%;
+        min-width: 0; /* Annule la largeur minimum de l'ordinateur */
+        width: 100%;
         padding: 20px 15px;
+        overflow-wrap: break-word;
     }
 
     .sidebar {
@@ -208,7 +226,7 @@ header h2 {
     }
 
     header h1 {
-        font-size: 1.8em;
+        font-size: 1.6em; /* Titre légèrement réduit pour rentrer sur les écrans de 360px */
     }
 
     header h2 {
@@ -220,10 +238,7 @@ header h2 {
         height: 120px;
     }
 
-    .main-content {
-        padding: 20px;
-    }
-      .job-header {
+    .job-header {
         flex-direction: column;
         align-items: flex-start;
     }
@@ -231,19 +246,20 @@ header h2 {
     .job-date {
         margin-top: 3px;
     }
+    
     .job-title {
-    flex: 1;
-    min-width: 0; /* 🔥 indispensable pour autoriser le retour à la ligne */
-    word-break: break-word;
+        flex: 1;
+        min-width: 0;
+        word-break: break-word;
     }
 
     .job ul li {
-    word-break: break-word;
+        word-break: break-word; /* Permet aux longues phrases de se couper proprement */
     }
     
-     .job ul {
-    padding-left: 18px;
-    max-width: 100%;
+    .job ul {
+        padding-left: 18px;
+        max-width: 100%;
     }
 }
 </style>
@@ -256,7 +272,6 @@ header h2 {
 <header>
 
     <div class="avatar-placeholder">
-        <!-- 👉 REMPLACE CE LIEN PAR TA PHOTO -->
         <img src="avatar.svg" alt="Avatar" width="150" height="150">
     </div>
 
@@ -285,28 +300,21 @@ header h2 {
 
 <script>
     (function() {
-        // On sépare votre mail en deux
         var user = "jonathan.brousse.job";
         var domain = "gmail.com";
         var fullEmail = user + "@" + domain;
         
-        // On récupère le paragraphe qui doit contenir le mail
         var container = document.getElementById("email-container");
         
-        // On crée le lien cliquable
         var mailLink = document.createElement("a");
         mailLink.href = "mailto:" + fullEmail;
         mailLink.textContent = " " + fullEmail;
-        // On garde le style cohérent avec votre CV (couleur, etc.)
         mailLink.style.color = "inherit"; 
         mailLink.style.textDecoration = "none";
 
-        // On ajoute le lien après l'icône de l'enveloppe
         container.appendChild(mailLink);
     })();
 </script>
-
-
 
 <div class="sidebar-item">
     <h3 class="section-title"><i class="fas fa-tools"></i> Compétences</h3>
@@ -351,6 +359,25 @@ header h2 {
 </aside>
 
 <main class="main-content">
+<!-- L'endroit où le nuage apparaîtra -->
+<div id="myCanvasContainer">
+  <canvas width="600" height="300" id="myCanvas">
+    <p>Votre navigateur ne supporte pas le canvas HTML5.</p>
+    <ul>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">JavaScript</a></li>
+      <li><a href="#">HTML5</a></li>
+      <li><a href="#">Open Source</a></li>
+      <li><a href="#">Interaction</a></li>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">JavaScript</a></li>
+      <li><a href="#">HTML5</a></li>
+      <li><a href="#">Open Source</a></li>
+      <li><a href="#">Interaction</a></li>
+      <!-- Ajoutez vos mots ici -->
+    </ul>
+  </canvas>
+</div>
         <h3 class="section-title"><i class="fas fa-briefcase"></i> Expériences Professionnelles</h3>
 
         <div class="job">
@@ -425,6 +452,24 @@ header h2 {
     </main>
 
 </div>
+<script src="https://www.goat1000.com/tagcanvas.min.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+  window.onload = function() {
+    try {
+      TagCanvas.Start('myCanvas', '', {
+        textColour: '#000000',
+        outlineColour: '#ff00ff',
+        reverse: true,
+        depth: 0.5,
+        maxSpeed: 0.04,
+        wheelZoom: false
+      });
+    } catch(e) {
+      // Si quelque chose échoue (ex: vieux navigateur)
+      document.getElementById('myCanvasContainer').style.display = 'none';
+    }
+  };
+</script>
 </body>
 </html>
